@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import AddBook from "./App/Components/AddBook";
+import BooksList from "./App/Components/BooksList";
 
 function App() {
+  const [bookId, setBookId] = useState("");
+  const getBookIdHandler = (id) => {
+    // console.log("id ============================== ", id);
+    setBookId(id);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="App-header">Book App</header>
+      <AddBook id={bookId} setBookId={setBookId} />
+      <BooksList getBookId={getBookIdHandler} />
     </div>
   );
 }
